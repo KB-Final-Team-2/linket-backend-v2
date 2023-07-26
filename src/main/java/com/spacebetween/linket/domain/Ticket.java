@@ -10,7 +10,7 @@ public class Ticket {
 
     @Id @GeneratedValue
     @Column(name = "ticket_id")
-    private Long ticketId; // 티켓 아이디 자동생성
+    private Long id; // 티켓 아이디 자동생성
     private Long ticketEventId;
     private Long ticketCompanyId;
     private String ticketEmail;
