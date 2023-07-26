@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 @Entity
 public class Event {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "event_id")

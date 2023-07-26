@@ -12,7 +12,7 @@ public class Hire {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "hire_id")
-    private Long Id;
+    private Long id;
 //    @ManyToOne
 //    @JoinColumn(name = "hire_event_id")//hireEventId
 //    private Event eventId;
