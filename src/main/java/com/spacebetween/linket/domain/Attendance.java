@@ -25,7 +25,7 @@ public class Attendance {
     private LocalDateTime regDate; // 등록일자
 
     @ManyToOne
-    @JoinColumn(name="user_id")
+    @JoinColumn(name="users_id")
     private Users users;
 
     @ManyToOne
@@ -88,11 +88,11 @@ public class Attendance {
         this.regDate = regDate;
     }
 
-    public Users getUser() {
+    public Users getUsers() {
         return users;
     }
 
-    public void setUser(Users users) {
+    public void setUsers(Users users) {
         this.users = users;
     }
 

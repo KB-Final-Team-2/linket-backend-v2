@@ -9,7 +9,7 @@ import java.util.List;
 public class Users {
 
     @Id @GeneratedValue
-    @Column(name = "user_id")
+    @Column(name = "users_id")
     private Long id;
 
     private String email; // 이메일
@@ -48,10 +48,10 @@ public class Users {
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users")
     private List<Attendance> attendances = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "users")
     private List<Ticket> tickets = new ArrayList<>();
 
     public Long getId() {
