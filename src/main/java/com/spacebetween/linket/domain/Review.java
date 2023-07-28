@@ -8,25 +8,88 @@ import javax.persistence.Id;
 @Entity
 public class Review {
 
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     @Column(name = "review_id")
     private Long id; // 리뷰 아이디
 
-    @Column(name = "rate_facil_chair")
     private Integer rateFacilChair; // 시설 (좌석)
-    @Column(name = "rate_facil_rest")
     private Integer rateFacilRest; // 시설 (화장실)
-    @Column(name = "rate_staff_in")
     private Integer rateStaffIn; // 직원 (입장 안내)
-    @Column(name = "rate_staff_ticket")
     private Integer rateStaffTicket; // 직원 (티켓 발급)
-    @Column(name = "rate_event_content")
     private Integer rateEventContent; // 행사 구성 만족도
-    @Column(name = "rate_event_go")
     private Integer rateEventGo; // 행사 진행 만족도
-    @Column(name = "review_etc")
     private String reviewEtc; // 기타 리뷰
-    @Column(name = "reg_date")
     private String regDate; // 등록일자
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Integer getRateFacilChair() {
+        return rateFacilChair;
+    }
+
+    public void setRateFacilChair(Integer rateFacilChair) {
+        this.rateFacilChair = rateFacilChair;
+    }
+
+    public Integer getRateFacilRest() {
+        return rateFacilRest;
+    }
+
+    public void setRateFacilRest(Integer rateFacilRest) {
+        this.rateFacilRest = rateFacilRest;
+    }
+
+    public Integer getRateStaffIn() {
+        return rateStaffIn;
+    }
+
+    public void setRateStaffIn(Integer rateStaffIn) {
+        this.rateStaffIn = rateStaffIn;
+    }
+
+    public Integer getRateStaffTicket() {
+        return rateStaffTicket;
+    }
+
+    public void setRateStaffTicket(Integer rateStaffTicket) {
+        this.rateStaffTicket = rateStaffTicket;
+    }
+
+    public Integer getRateEventContent() {
+        return rateEventContent;
+    }
+
+    public void setRateEventContent(Integer rateEventContent) {
+        this.rateEventContent = rateEventContent;
+    }
+
+    public Integer getRateEventGo() {
+        return rateEventGo;
+    }
+
+    public void setRateEventGo(Integer rateEventGo) {
+        this.rateEventGo = rateEventGo;
+    }
+
+    public String getReviewEtc() {
+        return reviewEtc;
+    }
+
+    public void setReviewEtc(String reviewEtc) {
+        this.reviewEtc = reviewEtc;
+    }
+
+    public String getRegDate() {
+        return regDate;
+    }
+
+    public void setRegDate(String regDate) {
+        this.regDate = regDate;
+    }
 }
