@@ -21,7 +21,7 @@ public class Ticket {
     private Review review;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "users_id")
     private Users users;
 
     @ManyToOne
