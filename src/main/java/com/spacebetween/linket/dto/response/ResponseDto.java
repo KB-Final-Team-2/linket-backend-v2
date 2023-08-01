@@ -1,4 +1,4 @@
-package com.spacebetween.linket.response;
+package com.spacebetween.linket.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

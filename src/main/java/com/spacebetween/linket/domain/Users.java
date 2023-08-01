@@ -1,23 +1,34 @@
 package com.spacebetween.linket.domain;
 
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Users {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "users_id")
     private Long id;
 
+    @Column(unique = true, nullable = false, length = 50)
     private String email; // 이메일
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 100)
     private String password; // 비밀번호
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String userName; // 이름
 
     @Column(nullable = false)
@@ -35,13 +46,17 @@ public class Users {
     @Column(nullable = false)
     private String role; // 회원 권한
 
-
     private LocalDateTime withdrawDate; // 회원탈퇴일자
 
     @Column
     private char enabled; // 회원탈퇴여부
 
+    @CreatedDate
+    @Column(updatable = false)
+    @DateTimeFormat
     private LocalDateTime regDate; // 등록일자
+
+    @LastModifiedDate
     private LocalDateTime lastUpdatedDate; // 수정일자
 
     @ManyToOne
@@ -54,131 +69,4 @@ public class Users {
     @OneToMany(mappedBy = "users")
     private List<Ticket> tickets = new ArrayList<>();
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public String getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
-    }
-
-    public boolean isAgreement() {
-        return agreement;
-    }
-
-    public void setAgreement(boolean agreement) {
-        this.agreement = agreement;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public char getGender() {
-        return gender;
-    }
-
-    public void setGender(char gender) {
-        this.gender = gender;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public LocalDateTime getWithdrawDate() {
-        return withdrawDate;
-    }
-
-    public void setWithdrawDate(LocalDateTime withdrawDate) {
-        this.withdrawDate = withdrawDate;
-    }
-
-    public char getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(char enabled) {
-        this.enabled = enabled;
-    }
-
-    public LocalDateTime getRegDate() {
-        return regDate;
-    }
-
-    public void setRegDate(LocalDateTime regDate) {
-        this.regDate = regDate;
-    }
-
-    public LocalDateTime getLastUpdatedDate() {
-        return lastUpdatedDate;
-    }
-
-    public void setLastUpdatedDate(LocalDateTime lastUpdatedDate) {
-        this.lastUpdatedDate = lastUpdatedDate;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
-    public List<Attendance> getAttendances() {
-        return attendances;
-    }
-
-    public void setAttendances(List<Attendance> attendances) {
-        this.attendances = attendances;
-    }
-
-    public List<Ticket> getTickets() {
-        return tickets;
-    }
-
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
-    }
 }
