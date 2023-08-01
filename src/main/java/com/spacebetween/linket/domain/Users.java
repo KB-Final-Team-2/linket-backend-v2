@@ -69,4 +69,7 @@ public class Users {
     @OneToMany(mappedBy = "users")
     private List<Ticket> tickets = new ArrayList<>();
 
+    public void updatePassword(String password) {
+        this.password = password;
+    }
 }
