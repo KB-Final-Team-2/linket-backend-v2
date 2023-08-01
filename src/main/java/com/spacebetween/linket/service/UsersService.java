@@ -34,9 +34,4 @@ public class UsersService {
 //        return usersRepository.findByEmailAndPassword(email,password);
 //    }
 
-    public void updateUserPassword(String email, String password){
-        Users user = usersRepository.findByEmail(email);
-        user.setPassword(password);
-        usersRepository.save(user);
-    }
 }

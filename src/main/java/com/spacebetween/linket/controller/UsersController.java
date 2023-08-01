@@ -84,15 +84,7 @@ public class UsersController {
                 HttpStatus.OK);
     }
 
-    @PostMapping("/password/{password}")
-    public ResponseEntity updateUserPassword(@PathVariable String password, HttpSession session) throws Exception{
-        String email = (String)session.getAttribute("email");
 
-        usersService.updateUserPassword(email, password);
-
-        return new ResponseEntity<ResponseDto>(new ResponseDto(200, new String("success"),"success"),
-                HttpStatus.OK);
-    }
 }
 
 
