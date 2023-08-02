@@ -44,6 +44,7 @@ public class AuthController {
             @ApiResponse(code = 409, message = "이미 존재하는 이메일"),
             @ApiResponse(code = 500, message = "서버 에러")
     })
+    @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody @Valid UserJoinDto userJoinDto, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
