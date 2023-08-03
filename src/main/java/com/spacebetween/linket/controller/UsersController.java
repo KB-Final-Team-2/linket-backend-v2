@@ -35,7 +35,7 @@ public class UsersController {
         Users user = usersService.findByUserEmail(email);
 
         UserResponseDto userInfo = UserResponseDto.builder()
-                .userId(user.getId())
+                .usersId(user.getId())
                 .email(user.getEmail())
                 .userName(user.getUserName())
                 .birthdate(user.getBirthdate())
@@ -75,7 +75,7 @@ public class UsersController {
             @ApiResponse(code = 200, message = "회원 전화번호 수정 완료")
     })
     @PutMapping("/phone")
-    public ResponseEntity updateUserPhone(@Valid UserPhoneUpdateDto userPhoneUpdateDto, HttpSession session) throws Exception {
+    public ResponseEntity updateUserPhone(@RequestBody @Valid UserPhoneUpdateDto userPhoneUpdateDto, HttpSession session) throws Exception {
         String email = (String)session.getAttribute("email");
 
         usersService.updateUserPhone(email, userPhoneUpdateDto);

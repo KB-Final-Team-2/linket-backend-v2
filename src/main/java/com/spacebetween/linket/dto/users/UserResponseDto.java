@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 public class UserResponseDto {
-    private Long userId;
+    private Long usersId;
     private String email;
     private String userName;
     private String birthdate;
