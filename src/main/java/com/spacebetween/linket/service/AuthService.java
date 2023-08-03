@@ -72,7 +72,7 @@ public class AuthService {
     public void updateUserPassword(String email, String password, String passwordConfirm){
         Users user = usersRepository.findByUserEmail(email).orElseThrow(() -> new CustomException(USER_NOT_FOUND));
 
-        if (passwordEncoder.matches(password, passwordConfirm) == false) {
+        if (password != passwordConfirm) {
             throw new CustomException(NOT_EQUAL_PASSWORD);
         }
         String encodedPassword = passwordEncoder.encode(password);
