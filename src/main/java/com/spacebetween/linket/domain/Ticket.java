@@ -1,7 +1,17 @@
 package com.spacebetween.linket.domain;
 
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Ticket {
 
@@ -9,11 +19,24 @@ public class Ticket {
     @Column(name = "ticket_id")
     private Long id; // 티켓 아이디 자동생성
 
+    @Column(nullable = false)
     private String serialNum; // 일련번호
+
+    @Column(nullable = false, columnDefinition = "varchar(10) default 'N'")
     private String ticketReg; // 티켓 등록여부 (일련번호 사용성여부 파악, default: 'N')
+
+    @Column(nullable = false, columnDefinition = "varchar(10) default 'Y'")
     private String ticketStatus; // 티켓 사용가능여부 (default: 'Y')
+
+    @CreatedDate
+    @Column(updatable = false)
+    @DateTimeFormat
     private String regDate; // 티켓등록일자
+
+    @LastModifiedDate
     private String lastUpdatedDate; // 수정일자
+
+    @Column(nullable = false)
     private String seat; // 좌석
 
     @OneToOne
@@ -28,83 +51,5 @@ public class Ticket {
     @JoinColumn(name = "event_id")
     private Event event;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getSerialNum() {
-        return serialNum;
-    }
-
-    public void setSerialNum(String serialNum) {
-        this.serialNum = serialNum;
-    }
-
-    public String getTicketReg() {
-        return ticketReg;
-    }
-
-    public void setTicketReg(String ticketReg) {
-        this.ticketReg = ticketReg;
-    }
-
-    public String getTicketStatus() {
-        return ticketStatus;
-    }
-
-    public void setTicketStatus(String ticketStatus) {
-        this.ticketStatus = ticketStatus;
-    }
-
-    public String getRegDate() {
-        return regDate;
-    }
-
-    public void setRegDate(String regDate) {
-        this.regDate = regDate;
-    }
-
-    public String getLastUpdatedDate() {
-        return lastUpdatedDate;
-    }
-
-    public void setLastUpdatedDate(String lastUpdatedDate) {
-        this.lastUpdatedDate = lastUpdatedDate;
-    }
-
-    public String getSeat() {
-        return seat;
-    }
-
-    public void setSeat(String seat) {
-        this.seat = seat;
-    }
-
-    public Review getReview() {
-        return review;
-    }
-
-    public void setReview(Review review) {
-        this.review = review;
-    }
-
-    public Users getUser() {
-        return users;
-    }
-
-    public void setUser(Users users) {
-        this.users = users;
-    }
-
-    public Event getEvent() {
-        return event;
-    }
-
-    public void setEvent(Event event) {
-        this.event = event;
-    }
+//    public void setTicket(Users user, Ticket ticket)
 }
