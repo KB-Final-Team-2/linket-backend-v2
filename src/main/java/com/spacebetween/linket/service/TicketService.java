@@ -2,9 +2,7 @@ package com.spacebetween.linket.service;
 
 import com.spacebetween.linket.domain.Ticket;
 import com.spacebetween.linket.domain.Users;
-import com.spacebetween.linket.dto.ticket.MemberTicketDto;
-import com.spacebetween.linket.dto.ticket.TicketDeleteDto;
-import com.spacebetween.linket.dto.ticket.TicketRegisterDto;
+import com.spacebetween.linket.dto.ticket.*;
 import com.spacebetween.linket.exception.CustomException;
 import com.spacebetween.linket.repository.TicketRepository;
 import com.spacebetween.linket.repository.UsersRepository;
@@ -78,6 +76,18 @@ public class TicketService {
     /**
      * 선택한 티켓 조회
      */
+    @Transactional
+    public TicketDto searchTicket(SearchTicketReqDto reqDto) {
+
+        Ticket ticket = ticketRepository.findById(reqDto.getTicketId())
+                .orElseThrow(() -> new CustomException(TICKET_NOT_FOUND));
+
+        return new TicketDto().builder()
+                .id(ticket.getId())
+                .serialNum(ticket.getSerialNum())
+                .seat(ticket.getSeat())
+                .build();
+    }
 
 
     /**

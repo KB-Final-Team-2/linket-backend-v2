@@ -50,7 +50,7 @@ public class TicketController {
     @PostMapping("/search")
     public ResponseEntity<?> searchTicket(@RequestBody SearchTicketReqDto reqDto) {
 
-        List<TicketDto> ticketDto = ticketService.searchTicket(reqDto.getTicketId());
+        TicketDto ticketDto = ticketService.searchTicket(reqDto);
 
         return new ResponseEntity<>(new ResponseDto(200, "success", ticketDto)
                 , HttpStatus.OK);
